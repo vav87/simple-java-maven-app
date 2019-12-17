@@ -3,13 +3,19 @@ node {
 
     stage('Build') {
         if (env.BRANCH_NAME == 'master') {
-            echo 'I only execute on the master branch'
-            bat 'mvn -B -DskipTests clean package'
+            echo 'Executing on the local_master branch'
+            bat 'mvn -DskipTests clean package'
         } else {
-            echo 'I execute elsewhere'
+            echo 'Executing on another branch'
         }
     }
     stage('Test') {
         bat 'mvn test'
+    }
+    stage('Example Deploy'){
+        echo 'Deploying process'
+    }
+    stage('Some another stage'){
+        echo 'Some another stage'
     }
 }
